@@ -1,1 +1,2 @@
+* text=auto linguist-detectable
 *.pdf filter=lfs diff=lfs merge=lfs -text
