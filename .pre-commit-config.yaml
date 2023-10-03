@@ -7,6 +7,9 @@ ci:
   autoupdate_schedule: quarterly
   skip: [latexmk]
 
+default_language_version:
+  python: pypy3
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
@@ -32,7 +35,7 @@ repos:
         # https://github.com/Mikaela/gist/blob/master/doctoc.txt
         args: [--update-only, --notitle]
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v3.0.2"
+    rev: "v3.0.3"
     hooks:
       - id: prettier
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
