@@ -24,10 +24,11 @@ repos:
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
       - id: trailing-whitespace
+        args: ["--markdown-linebreak-ext", "md,markdown"]
         # Let's not touch LICENSE files or reuse.software directory
         exclude: ^LICENSES\/.*|LICENSE$
         # File types depending on trailing whitespace. Use identify-cli
-        exclude_types: [tsv, markdown]
+        exclude_types: [svg, tsv]
   - repo: https://github.com/thlorenz/doctoc
     rev: v2.2.0
     hooks:
