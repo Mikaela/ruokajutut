@@ -321,3 +321,4 @@ TSWLatexianTemp*
 #*Notes.bib
 
 .cache/**
+node_modules
