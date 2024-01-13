@@ -29,16 +29,23 @@ repos:
         exclude: ^LICENSES\/.*|LICENSE$
         # File types depending on trailing whitespace. Use identify-cli
         exclude_types: [svg, tsv]
+
   - repo: https://github.com/thlorenz/doctoc
     rev: v2.2.0
     hooks:
       - id: doctoc
         # https://github.com/Mikaela/gist/blob/master/doctoc.txt
         args: [--update-only, --notitle]
+
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: "v4.0.0-alpha.8"
     hooks:
       - id: prettier
+        additional_dependencies: [
+            # https://aminda.eu/n/prettier
+            "prettier@3.2.1",
+          ]
+
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: "2.7.3"
     hooks:
