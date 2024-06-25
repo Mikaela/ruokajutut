@@ -54,10 +54,10 @@ tags
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
-*.synctex
-*.synctex(busy)
-*.synctex.gz
-*.synctex.gz(busy)
+*.synctex*
+#*.synctex(busy)
+#*.synctex.gz
+#*.synctex.gz(busy)
 *.pdfsync
 
 ## Build tool directories for auxiliary files
@@ -322,3 +322,4 @@ TSWLatexianTemp*
 
 .cache/**
 node_modules
+pnpm-lock.yaml

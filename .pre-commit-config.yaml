@@ -1,3 +1,5 @@
+# @format
+
 # See https://pre-commit.com for more information
 # See https://pre-commit.ci for more information
 ci:
@@ -5,7 +7,7 @@ ci:
   # the frequency of unnecessary PRs.
   # https://github.com/pre-commit-ci/issues/issues/83
   autoupdate_schedule: quarterly
-  skip: [latexmk]
+  skip: [pnpm-install-dev, prettier, latexmk]
 
 default_language_version:
   python: pypy3
@@ -37,10 +39,27 @@ repos:
         # https://github.com/Mikaela/gist/blob/master/doctoc.txt
         args: [--update-only, --notitle]
 
-  - repo: https://github.com/rbubley/mirrors-prettier
-    rev: "v3.3.0"
+  - repo: local
     hooks:
+      - id: pnpm-install-dev
+        name: Install pnpm dev dependencies
+        entry: corepack pnpm install -D
+        language: system
+        always_run: true
+        #verbose: true
+        pass_filenames: false
       - id: prettier
+        name: prettier
+        entry: corepack pnpm exec prettier --cache --ignore-unknown --write
+        language: system
+        # Better handled by pretty-format-json from pre-commit-hooks.
+        # Remember to have *.json in .prettierignore!
+        exclude_types: [json]
+      - id: latexmk
+        name: latexmk
+        entry: latexmk -quiet
+        language: system
+        types: [text, tex]
 
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: "2.7.3"
@@ -48,11 +67,3 @@ repos:
       - id: editorconfig-checker
         alias: ec
         args: [-disable-max-line-length]
-
-  - repo: local
-    hooks:
-      - id: latexmk
-        name: latexmk
-        entry: latexmk -quiet
-        language: system
-        types: [text, tex]
